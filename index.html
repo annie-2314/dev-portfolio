@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Devesh Roy — Insurance Advisor | Trust Today, Secure Tomorrow</title>
+<meta name="description" content="Devesh Roy — Roy Insurance Advisor. Health, Motor, Life, Personal Accident & Family Protection plans. Trusted guidance, transparent advice, lifelong support." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --navy:#0d1b3e;
+    --navy-deep:#0a1530;
+    --navy-soft:#122253;
+    --orange:#f47a20;
+    --orange-light:#ff9440;
+    --paper:#f5f7fb;
+    --white:#ffffff;
+    --ink:#1c2440;
+    --slate:#4a5468;
+    --line:#e3e8f2;
+    --shadow:0 18px 50px -18px rgba(13,27,62,.35);
+    --radius:20px;
+    --wrap:1150px;
+    --display:'Sora',system-ui,sans-serif;
+    --body:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;overflow-x:hidden}
+  body{
+    font-family:var(--body);
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  /* Telugu typography swap */
+  body.lang-te,
+  body.lang-te h1,body.lang-te h2,body.lang-te h3,body.lang-te .display{
+    font-family:'Noto Sans Telugu',var(--body);
+  }
+  body.lang-te{line-height:1.85}
+  h1,h2,h3{font-family:var(--display);line-height:1.15;letter-spacing:-.02em}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{width:min(var(--wrap),92%);margin-inline:auto}
+  section{padding:96px 0;position:relative}
+  .eyebrow{
+    font-family:var(--display);font-weight:700;font-size:.8rem;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--orange);display:inline-flex;align-items:center;gap:.6rem;
+  }
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--orange);display:inline-block}
+  .sec-head{max-width:640px;margin-bottom:52px}
+  .sec-head h2{font-size:clamp(1.9rem,4vw,2.9rem);font-weight:800;margin:.5rem 0 .4rem;color:var(--navy)}
+  .sec-head p{color:var(--slate);font-size:1.05rem}
+  .btn{
+    display:inline-flex;align-items:center;gap:.55rem;font-family:var(--display);font-weight:600;
+    font-size:.98rem;padding:.85rem 1.5rem;border-radius:999px;cursor:pointer;border:2px solid transparent;
+    transition:transform .2s ease,box-shadow .2s ease,background .2s ease,color .2s ease;white-space:nowrap;
+  }
+  .btn svg{width:18px;height:18px}
+  .btn-primary{background:var(--orange);color:#fff;box-shadow:0 12px 26px -10px rgba(244,122,32,.7)}
+  .btn-primary:hover{transform:translateY(-3px);background:var(--orange-light)}
+  .btn-wa{background:#25d366;color:#fff;box-shadow:0 12px 26px -10px rgba(37,211,102,.6)}
+  .btn-wa:hover{transform:translateY(-3px);filter:brightness(1.05)}
+  .btn-ghost{background:transparent;color:var(--navy);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--navy);transform:translateY(-3px)}
+
+  /* NAV */
+  header.nav{
+    position:sticky;top:0;z-index:60;background:rgba(255,255,255,.85);
+    backdrop-filter:saturate(160%) blur(14px);border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px;gap:1rem}
+  .brand{display:flex;align-items:center;gap:.7rem;font-family:var(--display);font-weight:800;color:var(--navy)}
+  .brand img{width:38px;height:38px}
+  .brand small{display:block;font-weight:500;font-size:.72rem;color:var(--orange);letter-spacing:.04em}
+  .nav-links{display:flex;align-items:center;gap:1.8rem}
+  .nav-links a{font-weight:500;font-size:.95rem;color:var(--slate);position:relative}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--orange);transition:width .25s}
+  .nav-links a:hover{color:var(--navy)}
+  .nav-links a:hover::after{width:100%}
+  .nav-cta{display:flex;align-items:center;gap:.8rem}
+  /* language toggle */
+  .lang-toggle{
+    display:inline-flex;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:3px;position:relative;
+  }
+  .lang-toggle button{
+    border:0;background:transparent;font-family:var(--display);font-weight:600;font-size:.82rem;
+    padding:.35rem .8rem;border-radius:999px;cursor:pointer;color:var(--slate);z-index:1;transition:color .25s;
+  }
+  .lang-toggle .thumb{position:absolute;top:3px;bottom:3px;width:calc(50% - 3px);left:3px;background:var(--navy);border-radius:999px;transition:transform .28s cubic-bezier(.4,.1,.2,1)}
+  body.lang-te .lang-toggle .thumb{transform:translateX(100%)}
+  body.lang-en .lang-toggle button[data-set="en"],
+  body.lang-te .lang-toggle button[data-set="te"]{color:#fff}
+  .nav-toggle{display:none;background:none;border:0;cursor:pointer;color:var(--navy)}
+
+  /* HERO */
+  .hero{background:
+      radial-gradient(1200px 500px at 85% -10%,rgba(244,122,32,.12),transparent 60%),
+      linear-gradient(180deg,#fbfcff, #eef2fb);
+    padding-top:64px;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .hero-grid>*,.about-grid>*,.contact-grid>*{min-width:0}
+  .hero h1{font-size:clamp(2.4rem,5.4vw,4.1rem);font-weight:800;color:var(--navy);margin:1rem 0 .3rem}
+  .hero h1 .accent{color:var(--orange)}
+  .hero .role{font-family:var(--display);font-weight:600;font-size:1.15rem;color:var(--slate);margin-bottom:1rem}
+  .script{font-family:var(--display);font-style:italic;font-weight:600;color:var(--navy);font-size:1.35rem}
+  .script b{color:var(--orange);font-style:italic}
+  .hero p.lead{color:var(--slate);font-size:1.08rem;max-width:44ch;margin:1.2rem 0 1.8rem}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:.9rem}
+  .hero-stats{display:flex;gap:2.2rem;margin-top:2.4rem;flex-wrap:wrap}
+  .hero-stats div{display:flex;flex-direction:column}
+  .hero-stats b{font-family:var(--display);font-size:1.7rem;color:var(--navy);font-weight:800;line-height:1}
+  .hero-stats span{font-size:.82rem;color:var(--slate);margin-top:.35rem}
+  .hero-visual{position:relative}
+  .hero-visual .frame{
+    border-radius:26px;overflow:hidden;box-shadow:var(--shadow);border:8px solid #fff;
+    background:#fff;transform:rotate(1.2deg);transition:transform .5s ease;
+  }
+  .hero-visual:hover .frame{transform:rotate(0)}
+  .hero-badge{
+    position:absolute;left:-14px;bottom:26px;background:#fff;border-radius:16px;padding:.85rem 1.1rem;
+    box-shadow:var(--shadow);display:flex;align-items:center;gap:.7rem;border:1px solid var(--line);
+  }
+  .hero-badge .dot{width:40px;height:40px;border-radius:12px;background:var(--navy);display:grid;place-items:center;color:#fff}
+  .hero-badge b{font-family:var(--display);color:var(--navy);font-size:.95rem;display:block}
+  .hero-badge span{font-size:.75rem;color:var(--slate)}
+
+  /* MARQUEE strip */
+  .strip{background:var(--navy);color:#fff;padding:0;overflow:hidden}
+  .strip .track{display:flex;gap:3.5rem;white-space:nowrap;animation:scroll 26s linear infinite;padding:16px 0}
+  .strip .track span{font-family:var(--display);font-weight:600;letter-spacing:.06em;opacity:.85;display:inline-flex;align-items:center;gap:1rem;font-size:.9rem}
+  .strip .track span::after{content:"◆";color:var(--orange);font-size:.6rem}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .about-grid p{color:var(--slate);font-size:1.08rem;margin-bottom:1.2rem}
+  .badges{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .badge{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:1.2rem;text-align:center}
+  .badge .ico{width:46px;height:46px;margin:0 auto .7rem;border-radius:12px;background:var(--navy);display:grid;place-items:center;color:#fff}
+  .badge b{font-family:var(--display);font-size:.95rem;color:var(--navy);display:block}
+  .about-card{background:linear-gradient(160deg,var(--navy-soft),var(--navy-deep));color:#fff;border-radius:var(--radius);padding:38px;box-shadow:var(--shadow)}
+  .about-card .quote{font-family:var(--display);font-size:1.35rem;font-weight:600;line-height:1.4}
+  .about-card .sig{margin-top:1.6rem;display:flex;align-items:center;gap:.8rem;border-top:1px solid rgba(255,255,255,.15);padding-top:1.4rem}
+  .about-card .sig img{width:40px;height:40px}
+  .about-card .sig b{font-family:var(--display)}
+  .about-card .sig span{font-size:.82rem;color:var(--orange-light)}
+
+  /* SERVICES */
+  #services{background:var(--paper)}
+  .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+  .svc{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px;
+    transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;position:relative;overflow:hidden;
+  }
+  .svc::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:var(--orange);transform:scaleY(0);transform-origin:top;transition:transform .3s}
+  .svc:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:transparent}
+  .svc:hover::before{transform:scaleY(1)}
+  .svc-top{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem}
+  .svc-ico{width:56px;height:56px;border-radius:16px;background:linear-gradient(150deg,var(--navy-soft),var(--navy));display:grid;place-items:center;color:#fff;flex-shrink:0}
+  .svc-ico svg{width:28px;height:28px}
+  .svc h3{font-size:1.3rem;color:var(--navy);font-weight:700}
+  .svc ul{list-style:none;display:grid;gap:.6rem}
+  .svc li{display:flex;align-items:flex-start;gap:.6rem;color:var(--slate);font-size:.98rem}
+  .svc li svg{width:16px;height:16px;margin-top:.35rem;color:var(--orange);flex-shrink:0}
+
+  /* WHY */
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .why{display:flex;gap:1rem;padding:26px;border-radius:16px;border:1px solid var(--line);transition:background .25s,transform .25s}
+  .why:hover{background:var(--navy);transform:translateY(-4px)}
+  .why:hover b,.why:hover p{color:#fff}
+  .why .check{width:40px;height:40px;flex-shrink:0;border-radius:50%;background:rgba(244,122,32,.14);display:grid;place-items:center;color:var(--orange)}
+  .why b{font-family:var(--display);color:var(--navy);font-size:1.02rem;display:block;margin-bottom:.2rem;transition:color .25s}
+  .why p{color:var(--slate);font-size:.9rem;transition:color .25s}
+
+  /* MISSION */
+  #mission{background:linear-gradient(160deg,var(--navy),var(--navy-deep));color:#fff;text-align:center}
+  #mission .wrap{max-width:820px}
+  #mission .eyebrow{color:var(--orange-light)}
+  #mission h2{font-size:clamp(1.7rem,3.6vw,2.6rem);font-weight:800;margin:1rem 0;line-height:1.35}
+  #mission h2 .accent{color:var(--orange-light)}
+  #mission .shield{width:64px;height:64px;margin:0 auto}
+
+  /* CONTACT */
+  .contact-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:48px;align-items:start}
+  .contact-list{display:grid;gap:16px;margin-top:1.5rem}
+  .clink{display:flex;align-items:center;gap:1rem;background:#fff;border:1px solid var(--line);border-radius:16px;padding:1rem 1.2rem;transition:transform .2s,box-shadow .2s}
+  .clink:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .clink .ci{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;color:#fff;flex-shrink:0}
+  .clink .ci.call{background:var(--orange)}
+  .clink .ci.wa{background:#25d366}
+  .clink .ci.mail{background:var(--navy)}
+  .clink small{color:var(--slate);font-size:.78rem;display:block}
+  .clink b{font-family:var(--display);color:var(--navy);font-size:1.05rem;overflow-wrap:anywhere}
+  .clink span:last-child{min-width:0}
+  form{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow)}
+  .field{margin-bottom:1.1rem}
+  .field label{font-family:var(--display);font-weight:600;font-size:.85rem;color:var(--navy);display:block;margin-bottom:.4rem}
+  .field input,.field textarea{
+    width:100%;border:1.5px solid var(--line);border-radius:12px;padding:.8rem 1rem;font-family:var(--body);
+    font-size:.98rem;color:var(--ink);background:var(--paper);transition:border-color .2s,background .2s;
+  }
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--orange);background:#fff}
+  .field textarea{min-height:110px;resize:vertical}
+  form .btn{width:100%;justify-content:center}
+
+  /* FOOTER */
+  footer{background:var(--navy-deep);color:#cdd6ea;padding:56px 0 30px}
+  .foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:2rem;flex-wrap:wrap;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.1)}
+  .foot-brand{display:flex;align-items:center;gap:.8rem;color:#fff;font-family:var(--display);font-weight:800;font-size:1.2rem}
+  .foot-brand img{width:42px;height:42px}
+  .foot-tag{color:var(--orange-light);font-style:italic;margin-top:.6rem;font-family:var(--display)}
+  .foot-links{display:flex;gap:1.6rem;flex-wrap:wrap}
+  .foot-links a{color:#cdd6ea;font-size:.92rem}
+  .foot-links a:hover{color:#fff}
+  .foot-bottom{padding-top:1.6rem;text-align:center;font-size:.85rem;color:#8a97b8}
+
+  /* TESTIMONIALS */
+  #testimonials{background:#fff}
+  .tst{display:flex;align-items:center;gap:18px;max-width:920px;margin:0 auto}
+  .tst-viewport{overflow:hidden;flex:1;border-radius:var(--radius)}
+  .tst-track{display:flex;transition:transform .55s cubic-bezier(.4,.1,.2,1)}
+  .tst-card{
+    flex:0 0 100%;box-sizing:border-box;padding:44px;background:var(--paper);
+    border:1px solid var(--line);border-radius:var(--radius);
+  }
+  .tst-stars{color:var(--orange);font-size:1.15rem;letter-spacing:.15em;margin-bottom:1rem}
+  .tst-card blockquote{
+    font-family:var(--display);font-weight:600;font-size:clamp(1.1rem,2.2vw,1.5rem);
+    line-height:1.5;color:var(--navy);margin-bottom:1.6rem;
+  }
+  .tst-who{display:flex;align-items:center;gap:.9rem}
+  .tst-av{
+    width:52px;height:52px;border-radius:50%;display:grid;place-items:center;flex-shrink:0;
+    color:#fff;font-family:var(--display);font-weight:700;font-size:1.05rem;letter-spacing:.02em;
+  }
+  .tst-who b{font-family:var(--display);color:var(--navy);font-size:1.02rem;display:block}
+  .tst-who small{color:var(--slate);font-size:.85rem}
+  .tst-arrow{
+    width:50px;height:50px;flex-shrink:0;border-radius:50%;border:1px solid var(--line);background:#fff;
+    color:var(--navy);cursor:pointer;display:grid;place-items:center;transition:background .2s,color .2s,transform .2s,box-shadow .2s;
+  }
+  .tst-arrow svg{width:22px;height:22px}
+  .tst-arrow:hover{background:var(--navy);color:#fff;transform:translateY(-2px);box-shadow:var(--shadow)}
+  .tst-dots{display:flex;justify-content:center;gap:.6rem;margin-top:28px}
+  .tst-dots button{
+    width:10px;height:10px;border-radius:50%;border:0;background:var(--line);cursor:pointer;padding:0;
+    transition:background .25s,width .25s;
+  }
+  .tst-dots button.on{background:var(--orange);width:26px;border-radius:999px}
+  @media(max-width:640px){
+    .tst-arrow{display:none}
+    .tst-card{padding:30px}
+  }
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* responsive */
+  @media(max-width:900px){
+    .nav-links{display:none}
+    .nav-toggle{display:block}
+    .nav-links.open{display:flex;position:absolute;top:74px;left:0;right:0;background:#fff;flex-direction:column;
+      align-items:flex-start;padding:1.2rem 6%;gap:1.1rem;border-bottom:1px solid var(--line);box-shadow:var(--shadow)}
+    .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+    .hero-visual{order:-1;max-width:440px;margin-inline:auto}
+    .services-grid,.why-grid,.badges{grid-template-columns:1fr}
+    .why-grid{gap:16px}
+    section{padding:70px 0}
+  }
+  @media(max-width:520px){
+    .badges{grid-template-columns:1fr}
+    .hero-stats{gap:1.4rem}
+    .nav-cta .btn-primary{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body class="lang-en">
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">
+      <img src="favicon.svg" alt="Roy Insurance Advisor logo" />
+      <span>Devesh Roy<small data-en="Insurance Advisor" data-te="ఇన్సూరెన్స్ అడ్వైజర్">Insurance Advisor</small></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about"   data-en="About"    data-te="గురించి">About</a>
+      <a href="#services"data-en="Services" data-te="సేవలు">Services</a>
+      <a href="#why"     data-en="Why Me"   data-te="ఎందుకు నేను">Why Me</a>
+      <a href="#testimonials" data-en="Reviews" data-te="రివ్యూలు">Reviews</a>
+      <a href="#mission" data-en="Mission"  data-te="లక్ష్యం">Mission</a>
+      <a href="#contact" data-en="Contact"  data-te="సంప్రదించండి">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <span class="thumb" aria-hidden="true"></span>
+        <button data-set="en" aria-label="English">EN</button>
+        <button data-set="te" aria-label="తెలుగు" style="font-family:'Noto Sans Telugu'">తెలుగు</button>
+      </div>
+      <a href="tel:+916305473299" class="btn btn-primary" data-en="Call Now" data-te="కాల్ చేయండి">Call Now</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="reveal">
+      <span class="eyebrow" data-en="Trust Today · Secure Tomorrow" data-te="నేడు నమ్మకం · రేపు భద్రత">Trust Today · Secure Tomorrow</span>
+      <h1><span data-en="Devesh Roy" data-te="దేవేష్ రాయ్">Devesh Roy</span><br /><span class="accent" data-en="Insurance Adviser" data-te="ఇన్సూరెన్స్ అడ్వైజర్">Insurance Adviser</span></h1>
+      <p class="script"><span data-en="Your Future." data-te="మీ భవిష్యత్తు.">Your Future.</span> <b data-en="My Responsibility." data-te="నా బాధ్యత.">My Responsibility.</b></p>
+      <p class="lead" data-en="I'm here to protect what matters most — with honest advice across Health, Motor, Life, Personal Accident and Family Protection plans." data-te="మీకు అత్యంత విలువైనవాటిని రక్షించడానికి నేను ఇక్కడ ఉన్నాను — Health, Motor, Life, Personal Accident మరియు Family Protection ప్లాన్లలో నిజాయితీతో కూడిన సలహాతో.">I'm here to protect what matters most — with honest advice across Health, Motor, Life, Personal Accident and Family Protection plans.</p>
+      <div class="hero-actions">
+        <a href="tel:+916305473299" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+          <span data-en="Call 6305473299" data-te="కాల్: 6305473299">Call 6305473299</span>
+        </a>
+        <a href="https://wa.me/916305473299?text=Hi%20Devesh%2C%20I%27d%20like%20insurance%20advice." class="btn btn-wa" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm5.9 14.3c-.3.7-1.4 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.4.5c-.1.2-.3.3-.1.6.1.3.6 1 1.3 1.6.9.8 1.6 1 1.9 1.2.2.1.4.1.5-.1l.6-.7c.2-.2.3-.2.6-.1l1.8.9c.3.1.4.2.5.3.1.2.1.6-.2 1.3z"/></svg>
+          <span data-en="WhatsApp" data-te="వాట్సాప్">WhatsApp</span>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div><b>15+</b><span data-en="Insurers compared" data-te="కంపెనీల పోలిక">Insurers compared</span></div>
+        <div><b>100%</b><span data-en="Transparent advice" data-te="పారదర్శక సలహా">Transparent advice</span></div>
+        <div><b>24/7</b><span data-en="Claim support" data-te="క్లెయిమ్ మద్దతు">Claim support</span></div>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <div class="frame"><img src="img.jpg" alt="Devesh Roy, Insurance Adviser" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="track" id="strip"></div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <span class="eyebrow" data-en="About Me" data-te="నా గురించి">About Me</span>
+      <h2 style="font-size:clamp(1.9rem,4vw,2.9rem);font-weight:800;color:var(--navy);margin:.6rem 0 1rem" data-en="Your Trusted Insurance Partner" data-te="మీ నమ్మకమైన బీమా భాగస్వామి">Your Trusted Insurance Partner</h2>
+      <p data-en="I'm Devesh Roy of Roy Insurance Advisor. I help individuals and families choose the right cover — comparing plans from multiple companies so you get the best protection at an affordable premium." data-te="నేను Roy Insurance Advisor కు చెందిన దేవేష్ రాయ్. అనేక కంపెనీల ప్లాన్లను పోల్చి, అందుబాటు ధరలో ఉత్తమ రక్షణ లభించేలా వ్యక్తులకు, కుటుంబాలకు సరైన కవర్ ఎంచుకోవడంలో సహాయం చేస్తాను.">I'm Devesh Roy of Roy Insurance Advisor. I help individuals and families choose the right cover — comparing plans from multiple companies so you get the best protection at an affordable premium.</p>
+      <p data-en="From choosing a policy to filing a claim, I stay with you at every step with honest, personalized guidance." data-te="పాలసీ ఎంపిక నుండి క్లెయిమ్ దాఖలు వరకు, నిజాయితీతో కూడిన వ్యక్తిగత మార్గదర్శకత్వంతో ప్రతి అడుగులోనూ మీతో ఉంటాను.">From choosing a policy to filing a claim, I stay with you at every step with honest, personalized guidance.</p>
+      <div class="badges" style="margin-top:1.8rem">
+        <div class="badge">
+          <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
+          <b data-en="Trusted Guidance" data-te="నమ్మకమైన సలహా">Trusted Guidance</b>
+        </div>
+        <div class="badge">
+          <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l2.5 2.5L16 9"/></svg></span>
+          <b data-en="100% Transparent" data-te="100% పారదర్శకత">100% Transparent</b>
+        </div>
+        <div class="badge">
+          <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15a8 8 0 1 1 16 0"/><path d="M4 15v2a2 2 0 0 0 2 2h1v-4H6a2 2 0 0 0-2 0zm16 0v2a2 2 0 0 1-2 2h-1v-4h1a2 2 0 0 1 2 0z"/></svg></span>
+          <b data-en="Reliable Support" data-te="నమ్మదగిన మద్దతు">Reliable Support</b>
+        </div>
+      </div>
+    </div>
+    <div class="about-card reveal">
+      <div class="quote" data-en="&ldquo;I don't just sell policies — I build protection plans around your family's real needs.&rdquo;" data-te="&ldquo;నేను కేవలం పాలసీలు అమ్మను — మీ కుటుంబ నిజమైన అవసరాల చుట్టూ రక్షణ ప్రణాళికలు రూపొందిస్తాను.&rdquo;">&ldquo;I don't just sell policies — I build protection plans around your family's real needs.&rdquo;</div>
+      <div class="sig">
+        <img src="favicon.svg" alt="" />
+        <div>
+          <b>Devesh Roy</b>
+          <span data-en="Roy Insurance Advisor" data-te="రాయ్ ఇన్సూరెన్స్ అడ్వైజర్">Roy Insurance Advisor</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-en="What I Offer" data-te="నేను అందించేవి">What I Offer</span>
+      <h2 data-en="Services I Offer" data-te="నేను అందించే సేవలు">Services I Offer</h2>
+      <p data-en="Complete insurance solutions for your health, vehicle, life and assets — under one trusted advisor." data-te="మీ ఆరోగ్యం, వాహనం, జీవితం మరియు ఆస్తుల కోసం పూర్తి బీమా పరిష్కారాలు — ఒకే నమ్మకమైన సలహాదారు వద్ద.">Complete insurance solutions for your health, vehicle, life and assets — under one trusted advisor.</p>
+    </div>
+    <div class="services-grid">
+      <!-- Health -->
+      <div class="svc reveal">
+        <div class="svc-top">
+          <span class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l2 5 4-12 2 7h6"/></svg></span>
+          <h3 data-en="Health Insurance" data-te="హెల్త్ ఇన్సూరెన్స్">Health Insurance</h3>
+        </div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg><span data-en="Individual Health Plans" data-te="వ్యక్తిగత ఆరోగ్య ప్లాన్లు">Individual Health Plans</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg><span data-en="Family Floater Plans" data-te="ఫ్యామిలీ ఫ్లోటర్ ప్లాన్లు">Family Floater Plans</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg><span data-en="Senior Citizen Health Insurance" data-te="సీనియర్ సిటిజన్ హెల్త్ ఇన్సూరెన్స్">Senior Citizen Health Insurance</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg><span data-en="Critical Illness Coverage" data-te="క్రిటికల్ ఇల్‌నెస్ కవరేజ్">Critical Illness Coverage</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg><span data-en="Cashless Hospital Support" data-te="క్యాష్‌లెస్ హాస్పిటల్ మద్దతు">Cashless Hospital Support</span></li>
+        </ul>
+      </div>
+      <!-- Motor -->
+      <div class="svc reveal">
+        <div class="svc-top">
+          <span class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 16l1-5a3 3 0 0 1 3-2h6a3 3 0 0 1 3 2l1 5"/><path d="M3 16h18v3H3z"/><circle cx="7" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></svg></span>
+          <h3 data-en="Motor Insurance" data-te="మోటార్ ఇన్సూరెన్స్">Motor Insurance</h3>
+        </div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg><span data-en="Car & Bike Insurance" data-te="కార్ & బైక్ ఇన్సూరెన్స్">Car &amp; Bike Insurance</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg><span data-en="Commercial Vehicle Insurance" data-te="కమర్షియల్ వెహికల్ ఇన్సూరెన్స్">Commercial Vehicle Insurance</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg><span data-en="Third-Party Insurance" data-te="థర్డ్-పార్టీ ఇన్సూరెన్స్">Third-Party Insurance</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg><span data-en="Comprehensive Insurance" data-te="కాంప్రహెన్సివ్ ఇన్సూరెన్స్">Comprehensive Insurance</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg><span data-en="Policy Renewals" data-te="పాలసీ రెన్యువల్స్">Policy Renewals</span></li>
+        </ul>
+      </div>
+      <!-- Life -->
+      <div class="svc reveal">
+        <div class="svc-top">
+          <span class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 8.6a5 5 0 0 0-8.8-3.2A5 5 0 0 0 3.2 8.6c0 4.4 8.8 10.4 8.8 10.4s8.8-6 8.8-10.4z"/></svg></span>
+          <h3 data-en="Life Insurance" data-te="లైఫ్ ఇన్సూరెన్స్">Life Insurance</h3>
+        </div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg><span data-en="Term Insurance" data-te="టర్మ్ ఇన్సూరెన్స్">Term Insurance</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg><span data-en="Child Future Plans" data-te="చైల్డ్ ఫ్యూచర్ ప్లాన్లు">Child Future Plans</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg><span data-en="Retirement Plans" data-te="రిటైర్‌మెంట్ ప్లాన్లు">Retirement Plans</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg><span data-en="Savings & Investment Plans" data-te="సేవింగ్స్ & ఇన్వెస్ట్‌మెంట్ ప్లాన్లు">Savings &amp; Investment Plans</span></li>
+        </ul>
+      </div>
+      <!-- Other -->
+      <div class="svc reveal">
+        <div class="svc-top">
+          <span class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg></span>
+          <h3 data-en="Other Services" data-te="ఇతర సేవలు">Other Services</h3>
+        </div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg><span data-en="Personal Accident Insurance" data-te="పర్సనల్ యాక్సిడెంట్ ఇన్సూరెన్స్">Personal Accident Insurance</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg><span data-en="Travel Insurance" data-te="ట్రావెల్ ఇన్సూరెన్స్">Travel Insurance</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg><span data-en="Home Insurance" data-te="హోమ్ ఇన్సూరెన్స్">Home Insurance</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg><span data-en="Claim Assistance" data-te="క్లెయిమ్ అసిస్టెన్స్">Claim Assistance</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg><span data-en="Policy Renewal Support" data-te="పాలసీ రెన్యువల్ మద్దతు">Policy Renewal Support</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-en="The Difference" data-te="ప్రత్యేకత">The Difference</span>
+      <h2 data-en="Why Choose Me" data-te="నన్ను ఎందుకు ఎంచుకోవాలి">Why Choose Me</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why reveal"><span class="check"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div><b data-en="Personalized Guidance" data-te="వ్యక్తిగత మార్గదర్శకత్వం">Personalized Guidance</b><p data-en="Advice tailored to your family's real needs." data-te="మీ కుటుంబ నిజ అవసరాలకు తగిన సలహా.">Advice tailored to your family's real needs.</p></div></div>
+      <div class="why reveal"><span class="check"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div><b data-en="Multi-Company Comparison" data-te="అనేక కంపెనీల పోలిక">Multi-Company Comparison</b><p data-en="Compare plans from many insurers in one place." data-te="ఒకేచోట అనేక కంపెనీల ప్లాన్లను పోల్చండి.">Compare plans from many insurers in one place.</p></div></div>
+      <div class="why reveal"><span class="check"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div><b data-en="Fast Policy Issuance" data-te="వేగవంతమైన పాలసీ జారీ">Fast Policy Issuance</b><p data-en="Quick, hassle-free paperwork and approvals." data-te="వేగవంతమైన, ఇబ్బంది లేని పేపర్‌వర్క్.">Quick, hassle-free paperwork and approvals.</p></div></div>
+      <div class="why reveal"><span class="check"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div><b data-en="Claim Support" data-te="క్లెయిమ్ మద్దతు">Claim Support</b><p data-en="I stand by you when it's time to claim." data-te="క్లెయిమ్ సమయంలో మీ వెంట ఉంటాను.">I stand by you when it's time to claim.</p></div></div>
+      <div class="why reveal"><span class="check"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div><b data-en="Affordable Premiums" data-te="అందుబాటు ప్రీమియంలు">Affordable Premiums</b><p data-en="Best protection that fits your budget." data-te="మీ బడ్జెట్‌కు సరిపడే ఉత్తమ రక్షణ.">Best protection that fits your budget.</p></div></div>
+      <div class="why reveal"><span class="check"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div><b data-en="Lifetime Support" data-te="జీవితకాల మద్దతు">Lifetime Support</b><p data-en="Ongoing help long after you buy." data-te="కొనుగోలు తర్వాత కూడా నిరంతర సహాయం.">Ongoing help long after you buy.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="wrap">
+    <div class="sec-head reveal" style="text-align:center;max-width:640px;margin-inline:auto">
+      <span class="eyebrow" style="justify-content:center" data-en="Client Stories" data-te="క్లయింట్ అనుభవాలు">Client Stories</span>
+      <h2 data-en="What My Clients Say" data-te="నా క్లయింట్లు ఏమంటున్నారు">What My Clients Say</h2>
+      <p data-en="Real families I've helped protect their health, vehicles and future." data-te="వారి ఆరోగ్యం, వాహనాలు మరియు భవిష్యత్తును కాపాడుకోవడంలో నేను సహాయం చేసిన నిజమైన కుటుంబాలు.">Real families I've helped protect their health, vehicles and future.</p>
+    </div>
+
+    <div class="tst reveal">
+      <button class="tst-arrow prev" id="tstPrev" aria-label="Previous">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+
+      <div class="tst-viewport">
+        <div class="tst-track" id="tstTrack">
+          <!-- 1 -->
+          <figure class="tst-card">
+            <div class="tst-stars">★★★★★</div>
+            <blockquote data-en="&ldquo;Devesh found us a family floater plan that saved us thousands. When my father was hospitalised, the cashless claim was settled without a single headache.&rdquo;" data-te="&ldquo;దేవేష్ మాకు వేలకొద్దీ ఆదా చేసే ఫ్యామిలీ ఫ్లోటర్ ప్లాన్‌ను కనుగొన్నారు. మా నాన్న ఆసుపత్రిలో చేరినప్పుడు, క్యాష్‌లెస్ క్లెయిమ్ ఎలాంటి ఇబ్బంది లేకుండా పరిష్కారమైంది.&rdquo;">&ldquo;Devesh found us a family floater plan that saved us thousands. When my father was hospitalised, the cashless claim was settled without a single headache.&rdquo;</blockquote>
+            <figcaption class="tst-who">
+              <span class="tst-av" style="background:#e8582e">PS</span>
+              <span><b>Priya Sharma</b><small data-en="Health Insurance · Hyderabad" data-te="హెల్త్ ఇన్సూరెన్స్ · హైదరాబాద్">Health Insurance · Hyderabad</small></span>
+            </figcaption>
+          </figure>
+          <!-- 2 -->
+          <figure class="tst-card">
+            <div class="tst-stars">★★★★★</div>
+            <blockquote data-en="&ldquo;I renewed my car and bike insurance through Devesh. He compared plans from many companies and got me the best comprehensive cover at a lower premium.&rdquo;" data-te="&ldquo;నేను నా కారు మరియు బైక్ ఇన్సూరెన్స్‌ను దేవేష్ ద్వారా రెన్యూ చేశాను. అనేక కంపెనీల ప్లాన్లను పోల్చి, తక్కువ ప్రీమియంకే ఉత్తమ కాంప్రహెన్సివ్ కవర్ ఇప్పించారు.&rdquo;">&ldquo;I renewed my car and bike insurance through Devesh. He compared plans from many companies and got me the best comprehensive cover at a lower premium.&rdquo;</blockquote>
+            <figcaption class="tst-who">
+              <span class="tst-av" style="background:#0d1b3e">RT</span>
+              <span><b>Ravi Teja</b><small data-en="Motor Insurance · Vijayawada" data-te="మోటార్ ఇన్సూరెన్స్ · విజయవాడ">Motor Insurance · Vijayawada</small></span>
+            </figcaption>
+          </figure>
+          <!-- 3 -->
+          <figure class="tst-card">
+            <div class="tst-stars">★★★★★</div>
+            <blockquote data-en="&ldquo;As a new parent I wanted the right term plan for my child's future. Devesh explained everything in simple words and never pushed me to over-buy.&rdquo;" data-te="&ldquo;కొత్త తల్లిదండ్రిగా నా బిడ్డ భవిష్యత్తు కోసం సరైన టర్మ్ ప్లాన్ కావాలనుకున్నాను. దేవేష్ ప్రతిదీ సులభమైన మాటల్లో వివరించారు, ఎప్పుడూ అనవసరంగా కొనమని ఒత్తిడి చేయలేదు.&rdquo;">&ldquo;As a new parent I wanted the right term plan for my child's future. Devesh explained everything in simple words and never pushed me to over-buy.&rdquo;</blockquote>
+            <figcaption class="tst-who">
+              <span class="tst-av" style="background:#f47a20">AR</span>
+              <span><b>Anjali Reddy</b><small data-en="Life Insurance · Guntur" data-te="లైఫ్ ఇన్సూరెన్స్ · గుంటూరు">Life Insurance · Guntur</small></span>
+            </figcaption>
+          </figure>
+          <!-- 4 -->
+          <figure class="tst-card">
+            <div class="tst-stars">★★★★★</div>
+            <blockquote data-en="&ldquo;Finding senior-citizen health cover for my parents felt impossible until I met Devesh. Honest advice, quick issuance and he still checks in on us.&rdquo;" data-te="&ldquo;మా అమ్మానాన్నలకు సీనియర్ సిటిజన్ హెల్త్ కవర్ దొరకడం అసాధ్యం అనిపించింది, దేవేష్‌ను కలిసే వరకు. నిజాయితీ సలహా, వేగవంతమైన జారీ, ఇప్పటికీ మా గురించి అడుగుతూ ఉంటారు.&rdquo;">&ldquo;Finding senior-citizen health cover for my parents felt impossible until I met Devesh. Honest advice, quick issuance and he still checks in on us.&rdquo;</blockquote>
+            <figcaption class="tst-who">
+              <span class="tst-av" style="background:#1c7c54">SK</span>
+              <span><b>Suresh Kumar</b><small data-en="Senior Citizen Plan · Warangal" data-te="సీనియర్ సిటిజన్ ప్లాన్ · వరంగల్">Senior Citizen Plan · Warangal</small></span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <button class="tst-arrow next" id="tstNext" aria-label="Next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+    <div class="tst-dots" id="tstDots"></div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section id="mission">
+  <div class="wrap reveal">
+    <svg class="shield" viewBox="0 0 24 24" fill="none" stroke="#ff9440" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+    <span class="eyebrow" data-en="My Mission" data-te="నా లక్ష్యం">My Mission</span>
+    <h2><span data-en="To give every family the right " data-te="ప్రతి కుటుంబానికి సరైన ">To give every family the right </span><span class="accent" data-en="financial protection" data-te="Financial Protection">financial protection</span><span data-en=" — and to be there with real support when it matters most." data-te=" అందించడం మరియు అవసరమైన సమయంలో నిజమైన మద్దతు ఇవ్వడం."> — and to be there with real support when it matters most.</span></h2>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:var(--paper)">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <span class="eyebrow" data-en="Get In Touch" data-te="సంప్రదించండి">Get In Touch</span>
+      <h2 style="font-size:clamp(1.9rem,4vw,2.9rem);font-weight:800;color:var(--navy);margin:.6rem 0 .6rem" data-en="Let's Protect What Matters" data-te="ముఖ్యమైనవాటిని కాపాడుకుందాం">Let's Protect What Matters</h2>
+      <p style="color:var(--slate)" data-en="Call, message on WhatsApp, or send the form — I'll get back with the right plan for you." data-te="కాల్ చేయండి, వాట్సాప్‌లో సందేశం పంపండి లేదా ఫారం నింపండి — మీకు సరైన ప్లాన్‌తో తిరిగి వస్తాను.">Call, message on WhatsApp, or send the form — I'll get back with the right plan for you.</p>
+      <div class="contact-list">
+        <a class="clink" href="tel:+916305473299">
+          <span class="ci call"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span>
+          <span><small data-en="Call / WhatsApp" data-te="కాల్ / వాట్సాప్">Call / WhatsApp</small><b>+91 63054 73299</b></span>
+        </a>
+        <a class="clink" href="https://wa.me/916305473299?text=Hi%20Devesh%2C%20I%27d%20like%20insurance%20advice." target="_blank" rel="noopener">
+          <span class="ci wa"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm5.9 14.3c-.3.7-1.4 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.4.5c-.1.2-.3.3-.1.6.1.3.6 1 1.3 1.6.9.8 1.6 1 1.9 1.2.2.1.4.1.5-.1l.6-.7c.2-.2.3-.2.6-.1l1.8.9c.3.1.4.2.5.3.1.2.1.6-.2 1.3z"/></svg></span>
+          <span><small data-en="Chat instantly" data-te="వెంటనే చాట్ చేయండి">Chat instantly</small><b data-en="Message on WhatsApp" data-te="వాట్సాప్‌లో సందేశం">Message on WhatsApp</b></span>
+        </a>
+        <a class="clink" href="mailto:jmjinsuranceworld999@gmail.com">
+          <span class="ci mail"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+          <span><small data-en="Email me" data-te="ఇమెయిల్ చేయండి">Email me</small><b>jmjinsuranceworld999@gmail.com</b></span>
+        </a>
+      </div>
+    </div>
+    <form id="leadForm" class="reveal" novalidate>
+      <div class="field">
+        <label data-en="Your Name" data-te="మీ పేరు">Your Name</label>
+        <input type="text" name="name" required data-en-ph="e.g. Ramesh Kumar" data-te-ph="ఉదా. రమేష్ కుమార్" placeholder="e.g. Ramesh Kumar" />
+      </div>
+      <div class="field">
+        <label data-en="Phone Number" data-te="ఫోన్ నంబర్">Phone Number</label>
+        <input type="tel" name="phone" required data-en-ph="10-digit mobile" data-te-ph="10 అంకెల మొబైల్" placeholder="10-digit mobile" />
+      </div>
+      <div class="field">
+        <label data-en="What do you need?" data-te="మీకు ఏమి కావాలి?">What do you need?</label>
+        <textarea name="msg" data-en-ph="e.g. Health cover for a family of 4" data-te-ph="ఉదా. 4గురు కుటుంబానికి హెల్త్ కవర్" placeholder="e.g. Health cover for a family of 4"></textarea>
+      </div>
+      <button type="submit" class="btn btn-wa">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2z"/></svg>
+        <span data-en="Send via WhatsApp" data-te="వాట్సాప్ ద్వారా పంపండి">Send via WhatsApp</span>
+      </button>
+      <p style="font-size:.78rem;color:var(--slate);margin-top:.8rem;text-align:center" data-en="Your details open a prefilled WhatsApp chat — no data is stored." data-te="మీ వివరాలు ముందే నింపిన వాట్సాప్ చాట్‌ను తెరుస్తాయి — ఏ డేటా నిల్వ చేయబడదు.">Your details open a prefilled WhatsApp chat — no data is stored.</p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand"><img src="favicon.svg" alt="" />Devesh Roy</div>
+        <p class="foot-tag" data-en="Protecting Your Family, Health &amp; Future." data-te="మీ కుటుంబం, ఆరోగ్యం &amp; భవిష్యత్తును కాపాడుతూ.">Protecting Your Family, Health &amp; Future.</p>
+      </div>
+      <nav class="foot-links">
+        <a href="#about"    data-en="About"    data-te="గురించి">About</a>
+        <a href="#services" data-en="Services" data-te="సేవలు">Services</a>
+        <a href="#why"      data-en="Why Me"   data-te="ఎందుకు నేను">Why Me</a>
+        <a href="#testimonials" data-en="Reviews" data-te="రివ్యూలు">Reviews</a>
+        <a href="#mission"  data-en="Mission"  data-te="లక్ష్యం">Mission</a>
+        <a href="#contact"  data-en="Contact"  data-te="సంప్రదించండి">Contact</a>
+      </nav>
+    </div>
+    <div class="foot-bottom">
+      <span data-en="© 2026 Roy Insurance Advisor · Devesh Roy · All rights reserved." data-te="© 2026 రాయ్ ఇన్సూరెన్స్ అడ్వైజర్ · దేవేష్ రాయ్ · సర్వ హక్కులు ప్రత్యేకించబడ్డాయి.">© 2026 Roy Insurance Advisor · Devesh Roy · All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var body = document.body;
+  var STORE = 'roy_lang';
+
+  function apply(lang){
+    body.classList.remove('lang-en','lang-te');
+    body.classList.add('lang-'+lang);
+    document.documentElement.lang = (lang==='te') ? 'te' : 'en';
+    // text nodes
+    document.querySelectorAll('[data-'+lang+']').forEach(function(el){
+      el.textContent = el.getAttribute('data-'+lang);
+    });
+    // placeholders
+    document.querySelectorAll('[data-'+lang+'-ph]').forEach(function(el){
+      el.setAttribute('placeholder', el.getAttribute('data-'+lang+'-ph'));
+    });
+    try{ localStorage.setItem(STORE, lang); }catch(e){}
+  }
+
+  // toggle buttons
+  document.querySelectorAll('.lang-toggle button').forEach(function(b){
+    b.addEventListener('click', function(){ apply(b.getAttribute('data-set')); });
+  });
+
+  // init
+  var saved = 'en';
+  try{ saved = localStorage.getItem(STORE) || 'en'; }catch(e){}
+  apply(saved);
+
+  // mobile menu
+  var tgl = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  tgl.addEventListener('click', function(){ links.classList.toggle('open'); });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ links.classList.remove('open'); });
+  });
+
+  // marquee strip (bilingual-aware, rebuilt from data)
+  var items = [
+    {en:'Health Insurance', te:'హెల్త్ ఇన్సూరెన్స్'},
+    {en:'Motor Insurance', te:'మోటార్ ఇన్సూరెన్స్'},
+    {en:'Life Insurance', te:'లైఫ్ ఇన్సూరెన్స్'},
+    {en:'Personal Accident', te:'పర్సనల్ యాక్సిడెంట్'},
+    {en:'Family Protection', te:'ఫ్యామిలీ ప్రొటెక్షన్'},
+    {en:'Travel Insurance', te:'ట్రావెల్ ఇన్సూరెన్స్'},
+    {en:'Claim Assistance', te:'క్లెయిమ్ అసిస్టెన్స్'}
+  ];
+  var strip = document.getElementById('strip');
+  var html = '';
+  // duplicate list for seamless loop
+  [0,1].forEach(function(){
+    items.forEach(function(it){
+      html += '<span data-en="'+it.en+'" data-te="'+it.te+'">'+it.en+'</span>';
+    });
+  });
+  strip.innerHTML = html;
+  // re-apply language to newly created strip nodes
+  apply(body.classList.contains('lang-te') ? 'te' : 'en');
+
+  // scroll reveal
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  // form -> WhatsApp
+  document.getElementById('leadForm').addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var f = ev.target;
+    var name = (f.name.value||'').trim();
+    var phone = (f.phone.value||'').trim();
+    var msg = (f.msg.value||'').trim();
+    if(!name || !phone){ f.reportValidity(); return; }
+    var isTe = body.classList.contains('lang-te');
+    var text = (isTe
+      ? 'నమస్తే దేవేష్, నా పేరు '+name+' (ఫోన్: '+phone+').'
+      : 'Hi Devesh, my name is '+name+' (phone: '+phone+').');
+    if(msg) text += (isTe ? ' నాకు కావాల్సింది: ' : ' I need: ') + msg;
+    window.open('https://wa.me/916305473299?text='+encodeURIComponent(text), '_blank');
+  });
+
+  // testimonials slider
+  (function(){
+    var track = document.getElementById('tstTrack');
+    if(!track) return;
+    var slides = track.children.length;
+    var dotsWrap = document.getElementById('tstDots');
+    var i = 0, timer = null;
+
+    for(var d=0; d<slides; d++){
+      var b = document.createElement('button');
+      b.setAttribute('aria-label','Slide '+(d+1));
+      (function(idx){ b.addEventListener('click', function(){ go(idx); reset(); }); })(d);
+      dotsWrap.appendChild(b);
+    }
+    var dots = dotsWrap.children;
+
+    function go(n){
+      i = (n + slides) % slides;
+      track.style.transform = 'translateX(-'+(i*100)+'%)';
+      for(var k=0;k<dots.length;k++){ dots[k].classList.toggle('on', k===i); }
+    }
+    function next(){ go(i+1); }
+    function prev(){ go(i-1); }
+    function reset(){ if(timer){ clearInterval(timer); } timer = setInterval(next, 5500); }
+
+    document.getElementById('tstNext').addEventListener('click', function(){ next(); reset(); });
+    document.getElementById('tstPrev').addEventListener('click', function(){ prev(); reset(); });
+
+    // pause on hover
+    var tst = document.querySelector('.tst');
+    tst.addEventListener('mouseenter', function(){ if(timer){ clearInterval(timer); timer=null; } });
+    tst.addEventListener('mouseleave', reset);
+
+    go(0); reset();
+  })();
+})();
+</script>
+</body>
+</html>
